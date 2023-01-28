@@ -1,0 +1,1097 @@
+--[[ Script made by
+Dc: ! Net Hub
+]]
+
+local Skids = {"=","="}
+
+local CmdGui = Instance.new("ScreenGui")
+local Background = Instance.new("Frame")
+local CmdName = Instance.new("TextLabel")
+local FindCmd = Instance.new("TextBox")
+local CmdHandler = Instance.new("ScrollingFrame")
+local CmdText = Instance.new("TextButton")
+local UIListLayout = Instance.new("UIListLayout")
+local Background2 = Instance.new("Frame")
+local Label = Instance.new("TextLabel")
+local Execute = Instance.new("TextBox")
+local Minimum = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
+local Background3 = Instance.new("Frame")
+local Topbar = Instance.new("TextLabel")
+local CmdTitle = Instance.new("TextLabel")
+local Background4 = Instance.new("Frame")
+local Notify6 = Instance.new("TextLabel")
+local Notify5 = Instance.new("TextLabel")
+local Notify4 = Instance.new("TextLabel")
+local Notify3 = Instance.new("TextLabel")
+local Notify2 = Instance.new("TextLabel")
+local Notify1 = Instance.new("TextLabel")
+local CloseBar = Instance.new("TextButton")
+local TransparencyBar = Instance.new("TextButton")
+local Prefix = ","
+
+CmdGui.Name = "CmdGui"
+CmdGui.Parent = game:GetService("CoreGui")
+CmdGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Background.Name = "Background"
+Background.Parent = CmdGui
+Background.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Background.BorderSizePixel = 0
+Background.Position = UDim2.new(0.368556708, 0, 0.11490047, 0)
+Background.Size = UDim2.new(0, 350, 0, 350)
+Background.Active = true
+Background.Draggable = true
+
+CmdName.Name = "CmdName"
+CmdName.Parent = Background
+CmdName.BackgroundColor3 = Color3.fromRGB(0, 60, 176)
+CmdName.BorderSizePixel = 0
+CmdName.Size = UDim2.new(0, 350, 0, 25)
+CmdName.Font = Enum.Font.GothamBlack
+CmdName.Text = "Commands"
+CmdName.TextColor3 = Color3.fromRGB(255 ,255 ,255)
+CmdName.TextScaled = true
+CmdName.TextSize = 14.000
+CmdName.TextWrapped = true
+
+FindCmd.Name = "FindCmd"
+FindCmd.Parent = Background
+FindCmd.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+FindCmd.BorderColor3 = Color3.fromRGB(0, 255, 0)
+FindCmd.BorderSizePixel = 0
+FindCmd.Position = UDim2.new(0.0714285746, 0, 0.0702347234, 0)
+FindCmd.Size = UDim2.new(0, 300, 0, 20)
+FindCmd.Font = Enum.Font.SourceSans
+FindCmd.PlaceholderColor3 = Color3.fromRGB(0, 60, 176)
+FindCmd.PlaceholderText = "Search For Command"
+FindCmd.Text = ""
+FindCmd.TextColor3 = Color3.fromRGB(255, 255, 255)
+FindCmd.TextSize = 14.000
+FindCmd.TextWrapped = true
+
+CmdHandler.Name = "CmdHandler"
+CmdHandler.Parent = Background
+CmdHandler.Active = true
+CmdHandler.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CmdHandler.BackgroundTransparency = 1.000
+CmdHandler.BorderSizePixel = 0
+CmdHandler.AutomaticCanvasSize = "Y"
+CmdHandler.Position = UDim2.new(0.0714285746, 0, 0.142857149, 0)
+CmdHandler.Size = UDim2.new(0, 300, 0, 290)
+CmdHandler.ScrollBarThickness = 2
+
+CmdText.Name = "CmdText"
+CmdText.Parent = nil
+CmdText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CmdText.BackgroundTransparency = 1.000
+CmdText.BorderSizePixel = 0
+CmdText.Size = UDim2.new(0, 300, 0, 25)
+CmdText.Font = Enum.Font.SourceSans
+CmdText.Text = "Text"
+CmdText.TextColor3 = Color3.fromRGB(255, 255, 255)
+CmdText.TextScaled = true
+CmdText.TextSize = 14.000
+CmdText.TextWrapped = true
+
+UIListLayout.Parent = CmdHandler
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+Minimum.Name = "Minimum"
+Minimum.Parent = Background
+Minimum.BackgroundColor3 = Color3.fromRGB(0, 155, 155)
+Minimum.BorderSizePixel = 0
+Minimum.Position = UDim2.new(0.842857122, 0, 0.00571428565, 0)
+Minimum.Size = UDim2.new(0, 20, 0, 20)
+Minimum.Font = Enum.Font.SourceSans
+Minimum.Text = ""
+Minimum.TextColor3 = Color3.fromRGB(255, 255, 255)
+Minimum.TextSize = 14.000
+Minimum.MouseButton1Click:Connect(function()
+	if Background.BackgroundTransparency == 0 then
+		Background.BackgroundTransparency = 1
+		Background.Size = UDim2.new(0, 350, 0, 25)
+		FindCmd.Visible = false
+		CmdHandler.Visible = false
+	elseif Background.BackgroundTransparency == 1 then
+		Background.BackgroundTransparency = 0
+		Background.Size = UDim2.new(0, 350, 0, 350)
+		FindCmd.Visible = true
+		CmdHandler.Visible = true
+	end
+end)
+
+Close.Name = "Close"
+Close.Parent = Background
+Close.BackgroundColor3 = Color3.fromRGB(155, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.928571403, 0, 0.00571428565, 0)
+Close.Size = UDim2.new(0, 20, 0, 20)
+Close.Font = Enum.Font.SourceSans
+Close.Text = ""
+Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+Close.TextSize = 14.000
+Close.MouseButton1Click:Connect(function()
+	Background.Visible = false
+end)
+
+-- New
+
+Background2.Name = "Background"
+Background2.Parent = CmdGui
+Background2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Background2.BorderSizePixel = 0
+Background2.Position = UDim2.new(0.012, 0, 0.807, 0)
+Background2.Size = UDim2.new(0, 250, 0, 80)
+Background2.Active = true
+Background2.Draggable = true
+
+Label.Name = "Label"
+Label.Parent = Background2
+Label.BackgroundColor3 = Color3.fromRGB(0, 60, 176)
+Label.BorderSizePixel = 0
+Label.Position = UDim2.new(0, 0, 0, 0)
+Label.Size = UDim2.new(0, 250, 0, 25)
+Label.Font = Enum.Font.GothamBlack
+Label.Text = "Execute Bar"
+Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label.TextScaled = true
+Label.TextSize = 14.000
+Label.TextWrapped = true
+
+Execute.Name = "Execute"
+Execute.Parent = Background2
+Execute.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Execute.BorderColor3 = Color3.fromRGB(0, 60, 176)
+Execute.Position = UDim2.new(0.097, 0, 0.436, 0)
+Execute.Size = UDim2.new(0, 200, 0, 30)
+Execute.Font = Enum.Font.SourceSans
+Execute.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+Execute.PlaceholderText = "Press "..Prefix.." To Enter"
+Execute.Text = ""
+Execute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Execute.TextSize = 16.000
+Execute.TextWrapped = true
+
+Background3.Name = "Background3"
+Background3.Parent = CmdGui
+Background3.BackgroundColor3 = Color3.fromRGB(0, 60, 176)
+Background3.BorderSizePixel = 0
+Background3.Position = UDim2.new(0.306701034, 0, 0.288421065, 0)
+Background3.Size = UDim2.new(0, 200, 0, 100)
+Background3.Active = true
+Background3.Visible = false
+
+Topbar.Name = "Topbar"
+Topbar.Parent = Background3
+Topbar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Topbar.BorderSizePixel = 0
+Topbar.Size = UDim2.new(0, 200, 0, 25)
+Topbar.Font = Enum.Font.GothamBlack
+Topbar.Text = ""
+Topbar.TextColor3 = Color3.fromRGB(255, 255, 255)
+Topbar.TextScaled = true
+Topbar.TextSize = 14.000
+Topbar.TextWrapped = true
+
+CmdTitle.Name = "CmdTitle"
+CmdTitle.Parent = Background3
+CmdTitle.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+CmdTitle.BackgroundTransparency = 1.000
+CmdTitle.BorderSizePixel = 0
+CmdTitle.Position = UDim2.new(0.0500000007, 0, 0.379999995, 0)
+CmdTitle.Size = UDim2.new(0, 180, 0, 40)
+CmdTitle.Font = Enum.Font.GothamBlack
+CmdTitle.Text = ""
+CmdTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+CmdTitle.TextSize = 14.000
+CmdTitle.TextWrapped = true
+
+Background4.Name = "Background4"
+Background4.Parent = CmdGui
+Background4.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Background4.BorderSizePixel = 0
+Background4.Position = UDim2.new(0.0154639352, 0, 0.519107938, 0)
+Background4.Size = UDim2.new(0, 250, 0, 119)
+Background4.Active = true
+Background4.Draggable = true
+
+Notify6.Name = "Notify6"
+Notify6.Parent = Background4
+Notify6.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify6.BackgroundTransparency = 1.000
+Notify6.BorderSizePixel = 0
+Notify6.Position = UDim2.new(0, 0, -0.00512820482, 0)
+Notify6.Size = UDim2.new(0, 250, 0, 20)
+Notify6.Font = Enum.Font.GothamBlack
+Notify6.Text = ""
+Notify6.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify6.TextScaled = true
+Notify6.TextSize = 14.000
+Notify6.TextWrapped = true
+
+Notify5.Name = "Notify5"
+Notify5.Parent = Background4
+Notify5.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify5.BackgroundTransparency = 1.000
+Notify5.BorderSizePixel = 0
+Notify5.Position = UDim2.new(0, 0, 0.162939027, 0)
+Notify5.Size = UDim2.new(0, 250, 0, 20)
+Notify5.Font = Enum.Font.GothamBlack
+Notify5.Text = ""
+Notify5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify5.TextScaled = true
+Notify5.TextSize = 14.000
+Notify5.TextWrapped = true
+
+Notify4.Name = "Notify4"
+Notify4.Parent = Background4
+Notify4.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify4.BackgroundTransparency = 1.000
+Notify4.BorderSizePixel = 0
+Notify4.Position = UDim2.new(0, 0, 0.331006259, 0)
+Notify4.Size = UDim2.new(0, 250, 0, 20)
+Notify4.Font = Enum.Font.GothamBlack
+Notify4.Text = ""
+Notify4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify4.TextScaled = true
+Notify4.TextSize = 14.000
+Notify4.TextWrapped = true
+
+Notify3.Name = "Notify3"
+Notify3.Parent = Background4
+Notify3.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify3.BackgroundTransparency = 1.000
+Notify3.BorderSizePixel = 0
+Notify3.Position = UDim2.new(0, 0, 0.499073505, 0)
+Notify3.Size = UDim2.new(0, 250, 0, 20)
+Notify3.Font = Enum.Font.GothamBlack
+Notify3.Text = ""
+Notify3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify3.TextScaled = true
+Notify3.TextSize = 14.000
+Notify3.TextWrapped = true
+
+Notify2.Name = "Notify2"
+Notify2.Parent = Background4
+Notify2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify2.BackgroundTransparency = 1.000
+Notify2.BorderSizePixel = 0
+Notify2.Position = UDim2.new(0, 0, 0.667140722, 0)
+Notify2.Size = UDim2.new(0, 250, 0, 20)
+Notify2.Font = Enum.Font.GothamBlack
+Notify2.Text = ""
+Notify2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify2.TextScaled = true
+Notify2.TextSize = 14.000
+Notify2.TextWrapped = true
+
+Notify1.Name = "Notify1"
+Notify1.Parent = Background4
+Notify1.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Notify1.BackgroundTransparency = 1.000
+Notify1.BorderSizePixel = 0
+Notify1.Position = UDim2.new(0, 0, 0.835207999, 0)
+Notify1.Size = UDim2.new(0, 250, 0, 20)
+Notify1.Font = Enum.Font.GothamBlack
+Notify1.Text = ""
+Notify1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Notify1.TextScaled = true
+Notify1.TextSize = 14.000
+Notify1.TextWrapped = true
+
+CloseBar.Name = "CloseBar"
+CloseBar.Parent = Background4
+CloseBar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseBar.BorderSizePixel = 0
+CloseBar.Position = UDim2.new(0.899999976, 0, -0.210084036, 0)
+CloseBar.Size = UDim2.new(0, 25, 0, 25)
+CloseBar.Font = Enum.Font.GothamBlack
+CloseBar.Text = "X"
+CloseBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBar.TextScaled = true
+CloseBar.TextSize = 14.000
+CloseBar.TextWrapped = true
+CloseBar.MouseButton1Click:Connect(function()
+	Background4.Visible = false
+end)
+
+TransparencyBar.Name = "TransparencyBar"
+TransparencyBar.Parent = Background4
+TransparencyBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+TransparencyBar.BorderSizePixel = 0
+TransparencyBar.Position = UDim2.new(0.799999952, 0, -0.210084036, 0)
+TransparencyBar.Size = UDim2.new(0, 25, 0, 25)
+TransparencyBar.Font = Enum.Font.GothamBlack
+TransparencyBar.Text = "="
+TransparencyBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+TransparencyBar.TextScaled = true
+TransparencyBar.TextSize = 14.000
+TransparencyBar.TextWrapped = true
+TransparencyBar.MouseButton1Click:Connect(function()
+	if TransparencyBar.Text == "=" then
+		Background4.BackgroundTransparency = 0.750
+		CloseBar.BackgroundTransparency = 0.750
+		TransparencyBar.BackgroundTransparency = 0.750
+		TransparencyBar.Text = "+"
+	else
+		Background4.BackgroundTransparency = 0.000
+		CloseBar.BackgroundTransparency = 0.000
+		TransparencyBar.BackgroundTransparency = 0.000
+		TransparencyBar.Text = "="
+	end
+end)
+
+local UseCommand = false
+local Versions = "5.8"
+local Cmd = {}
+
+Cmd[#Cmd + 1] = {Text = "versions "..Versions,Title = "Script versions"}
+Cmd[#Cmd + 1] = {Text = "script by gramajoalexishack#0524",Title = "Script owner / My Discord"}
+Cmd[#Cmd + 1] = {Text = "Click?",Title = "Click on cmd to use quick cmd"}
+Cmd[#Cmd + 1] = {Text = "*Note*",Title = "New updates: Reduce lag & added more things and teleports"}
+Cmd[#Cmd + 1] =	{Text = "cmd / cmds",Title = "Show commands bar"}
+Cmd[#Cmd + 1] =	{Text = "rejoin / rj",Title = "Rejoin the game"}
+Cmd[#Cmd + 1] = {Text = "cuffs [plr]",Title = "Gives player hand cuffs"}
+Cmd[#Cmd + 1] = {Text = "key [plr]",Title = "Gives player key card"}
+Cmd[#Cmd + 1] = {Text = "shield [plr]",Title = "Gives player shield"}
+Cmd[#Cmd + 1] =	{Text = "leave / leaveserver / quit",Title = "Leave the server"}
+Cmd[#Cmd + 1] = {Text = "antitp / antibring",Title = "You are cannot be bring by another exploiter"}
+Cmd[#Cmd + 1] = {Text = "unantitp / unantibring",Title = "You are can be bring by another exploiter"}
+Cmd[#Cmd + 1] = {Text = "killsaura [plr]",Title = "Gives player a kill aura"}
+Cmd[#Cmd + 1] = {Text = "nokillsaura [plr]",Title = "Remove a kill aura from player"}
+Cmd[#Cmd + 1] = {Text = "addvirus / virus [plr]",Title = "Virus player"}
+Cmd[#Cmd + 1] = {Text = "removevirus / revirus [plr]",Title = "Remove a virus from a player"}
+Cmd[#Cmd + 1] = {Text = "How to use virus?",Title = "Whoever get virus if they get touched by any player the player that touch the virus playe will die"}
+Cmd[#Cmd + 1] = {Text = "clearesp",Title = "Clears esp"}
+Cmd[#Cmd + 1] = {Text = "m4 / M4A1",Title = "Get M4A1"}
+Cmd[#Cmd + 1] = {Text = "ak / Ak-47",Title = "Get Ak-47"}
+Cmd[#Cmd + 1] = {Text = "m9",Title = "Get M9"}
+Cmd[#Cmd + 1] = {Text = "remi / Remington 870",Title = "Get Remington 870"}
+Cmd[#Cmd + 1] = {Text = "hammer",Title = "Get Hammer"}
+Cmd[#Cmd + 1] = {Text = "knife",Title = "Get Knife"}
+Cmd[#Cmd + 1] = {Text = "esp [plr]",Title = "Esp player"}
+Cmd[#Cmd + 1] = {Text = "unesp [plr]",Title = "Unesp player"}
+Cmd[#Cmd + 1] = {Text = "espall",Title = "Esp all players"}
+Cmd[#Cmd + 1] = {Text = "espinmate / espinmates",Title = "Esp all inmates"}
+Cmd[#Cmd + 1] = {Text = "espguard / espguards",Title = "Esp all guards"}
+Cmd[#Cmd + 1] = {Text = "espcrim / espcriminal / espcriminals",Title = "Esp all criminals"}
+Cmd[#Cmd + 1] = {Text = "espneutral",Title = "Esp all neutral"}
+Cmd[#Cmd + 1] = {Text = "unespall",Title = "Unesp all players"}
+Cmd[#Cmd + 1] = {Text = "unespinmate / unespinmates",Title = "Unesp all inmates"}
+Cmd[#Cmd + 1] = {Text = "unespguard / unespguards",Title = "Unesp all guards"}
+Cmd[#Cmd + 1] = {Text = "unespcrim / unespcriminal / unespcriminals",Title = "Unesp all criminals"}
+Cmd[#Cmd + 1] = {Text = "unespneutral",Title = "Unesp all neutral"}
+Cmd[#Cmd + 1] =	{Text = "admin / giveadmin [plr]",Title = "Give a commands to player"}
+Cmd[#Cmd + 1] =	{Text = "unadmin / removeadmin [plr]",Title = "Remove a commands from player"}
+Cmd[#Cmd + 1] =	{Text = "k [plr]",Title = "Kill the player if it doesn't work kill kall and it will work si no funciona darle a kall y funcionara"}
+Cmd[#Cmd + 1] =	{Text = "kall",Title = "Kill all players"}
+Cmd[#Cmd + 1] =	{Text = "kg / killguard",Title = "Kill all guards"}
+Cmd[#Cmd + 1] =	{Text = "ki / killinmate",Title = "Kill all inmates"}
+Cmd[#Cmd + 1] =	{Text = "kc / killcriminal",Title = "Kill all criminals"}
+Cmd[#Cmd + 1] =	{Text = "tase [plr]",Title = "Tase the player"}
+Cmd[#Cmd + 1] = {Text = "taseall",Title = "Tase all everyone"}
+Cmd[#Cmd + 1] =	{Text = "lk / loopkill [plr]",Title = "Loop kills player"}
+Cmd[#Cmd + 1] =	{Text = "unlk / unloopkill [plr]",Title = "Unloop kills player"}
+Cmd[#Cmd + 1] =	{Text = "lkall / loopkillall",Title = "Loop kills all players"}
+Cmd[#Cmd + 1] =	{Text = "lkg / loopkillguard",Title = "Loop kills all guards"}
+Cmd[#Cmd + 1] =	{Text = "lki / loopkillinmate",Title = "Loop kills all inmates"}
+Cmd[#Cmd + 1] =	{Text = "lkc / loopkillcriminal",Title = "Loop kills all criminals"}
+Cmd[#Cmd + 1] =	{Text = "unlkall / unloopkillall",Title = "Unloop kills all players"}
+Cmd[#Cmd + 1] =	{Text = "unlkg / unloopkillguard",Title = "Unloop kills all guards"}
+Cmd[#Cmd + 1] =	{Text = "unlki / unloopkillinmate",Title = "Unloop kills all inmates"}
+Cmd[#Cmd + 1] =	{Text = "unlkc / unloopkillcriminal",Title = "Unloop kills all criminals"}
+Cmd[#Cmd + 1] =	{Text = "loopgoto / lkgoto",Title = "tp spam you"}
+Cmd[#Cmd + 1] =	{Text = "unloopgoto / unlkgoto",Title = "unloopgoto spam"}
+Cmd[#Cmd + 1] =	{Text = "i / inmates / prisoner / prisoners",Title = "Become inmate team"}
+Cmd[#Cmd + 1] =	{Text = "g / guards / cop / polices",Title = "Become guard team"}
+Cmd[#Cmd + 1] =	{Text = "c / criminals / criminal",Title = "Become criminal team"}
+Cmd[#Cmd + 1] =	{Text = "n / neutrals",Title = "Become neutral team"}
+Cmd[#Cmd + 1] =	{Text = "re / refresh",Title = "Respawn on old position"}
+Cmd[#Cmd + 1] =	{Text = "res / respawn",Title = "Respawn on respawn pads"}
+Cmd[#Cmd + 1] =	{Text = "goto / to [plr]",Title = "Teleports to the player"}
+Cmd[#Cmd + 1] =	{Text = "bring [plr]",Title = "Teleports player to you"}
+Cmd[#Cmd + 1] =	{Text = "bringall [plr]",Title = "Teleports all players"}
+Cmd[#Cmd + 1] = {Text = "fly [speed]",Title = "Activate fly"}
+Cmd[#Cmd + 1] = {Text = "unfly",Title = "Unactivate fly"}
+Cmd[#Cmd + 1] =	{Text = "tp / teleport [plr] [plr2]",Title = "Teleports player to another player"}
+Cmd[#Cmd + 1] =	{Text = "arrest [plr] [time]",Title = "Arrest player that is a criminal"}
+Cmd[#Cmd + 1] =	{Text = "arrestall / arrestothers",Title = "Arrest all criminals"}
+Cmd[#Cmd + 1] =	{Text = "sa / looparrest [plr]",Title = "Spam arrest player & lag player and server"}
+Cmd[#Cmd + 1] =	{Text = "unsa / unlooparrest [plr]",Title = "Stop spam arrest player"}
+Cmd[#Cmd + 1] =	{Text = "clearloopkill / clearloopkills",Title = "clear all loop kills table"}
+Cmd[#Cmd + 1] =	{Text = "auto / autore / autorefresh",Title = "Auto respawn on old position when died"}
+Cmd[#Cmd + 1] =	{Text = "unauto / unautore / unautorefresh",Title = "Stop auto respawn on old position when died"}
+Cmd[#Cmd + 1] =	{Text = "killaura",Title = "Activate kill aura"}
+Cmd[#Cmd + 1] =	{Text = "nokillaura / unkillaura",Title = "Unactivate kill aura"}
+Cmd[#Cmd + 1] =	{Text = "fling",Title ="Fling GUI"}
+Cmd[#Cmd + 1] = {Text = "antifling",Title = "Activate anti fling"}
+Cmd[#Cmd + 1] = {Text = "unantifling",Title = "Unactivate anti fling"}
+Cmd[#Cmd + 1] = {Text = "god",Title = "Become a god mode"}
+Cmd[#Cmd + 1] = {Text = "ungod",Title = "Unbecome a god mode"}
+Cmd[#Cmd + 1] =	{Text = "view / spectate / watch [plr]",Title = "Spectates the player"}
+Cmd[#Cmd + 1] =	{Text = "unview / unspectate / stopwatch",Title = "Unspectates the player"}
+Cmd[#Cmd + 1] =	{Text = "fp / speedpunch",Title = "Activate fast punch"}
+Cmd[#Cmd + 1] =	{Text = "fn / nofastpunch / normalspeedpunch",Title = "unactivate fast punch"}
+Cmd[#Cmd + 1] =	{Text = "sp / onepunch",Title = "Activate super punch"}
+Cmd[#Cmd + 1] =	{Text = "sn / normalpunch",Title = "Unactivate super punch"}
+Cmd[#Cmd + 1] =	{Text = "prefix / newprefix / changeprefix [prefix text]",Title = "Changes prefix"}
+Cmd[#Cmd + 1] =	{Text = "red",Title = "Changes name tag color to red color"}
+Cmd[#Cmd + 1] = {Text = "antilag / boostfps",Title = "Boost a little fps"}
+Cmd[#Cmd + 1] = {Text = "unantilag",Title = "Stop boost the fps"}
+Cmd[#Cmd + 1] = {Text = "noclip / noclips",Title = "Activate no clips"}
+Cmd[#Cmd + 1] = {Text = "clip / clips",Title = "Unactivate no clips"}
+Cmd[#Cmd + 1] =	{Text = "orange",Title = "Changes name tag color to orange color"}
+Cmd[#Cmd + 1] =	{Text = "blue",Title = "Changes name tag color to blue color"}
+Cmd[#Cmd + 1] =	{Text = "black",Title = "Changes name tag color to black color"}
+Cmd[#Cmd + 1] =	{Text = "purple",Title = "Changes name tag color to purple color"}
+Cmd[#Cmd + 1] =	{Text = "brown",Title = "Changes name tag color to brown color"}
+Cmd[#Cmd + 1] =	{Text = "white",Title = "Changes name tag color to white color"}
+Cmd[#Cmd + 1] =	{Text = "pink",Title = "Changes name tag color to pink color"}
+Cmd[#Cmd + 1] =	{Text = "grey",Title = "Changes name tag color to grey color"}
+Cmd[#Cmd + 1] =	{Text = "green",Title = "Changes name tag color to green color"}
+Cmd[#Cmd + 1] =	{Text = "yellow",Title = "Changes name tag color to yellow color"}
+Cmd[#Cmd + 1] =	{Text = "getpos",Title = "Prints positions"}
+Cmd[#Cmd + 1] =	{Text = "unload / destroygui",Title = "Unload the scripts"}
+Cmd[#Cmd + 1] =	{Text = "reload / update",Title = "Reload the script to new version"}
+Cmd[#Cmd + 1] =	{Text = "How to open console?",Title = "To open console chat /console or press F9 or Fn + F9"}
+Cmd[#Cmd + 1] =	{Text = "lagserver / disconnect",Title = "Lag server and disconnect after 5 minutes of lagging"}
+Cmd[#Cmd + 1] =	{Text = "unlagserver / undisconnect",Title = "Stop lag server"}
+Cmd[#Cmd + 1] =	{Text = "speed / setspeed / walkspeed [count]",Title = "Changes walk speeds"}
+Cmd[#Cmd + 1] =	{Text = "jumppower / setjumppower [count]",Title = "Changes jump powers"}
+Cmd[#Cmd + 1] =	{Text = "hipheight / sethipheight [count]",Title = "Changes hip heights"}
+Cmd[#Cmd + 1] =	{Text = "gravity / setgravity [count]",Title = "Changes gravity"}
+Cmd[#Cmd + 1] =	{Text = "resetspeed / resetwalkspeed",Title = "Reset walk speeds"}
+Cmd[#Cmd + 1] =	{Text = "resetjumppower / rejumppower",Title = "Reset jump powers"}
+Cmd[#Cmd + 1] =	{Text = "resethipheight / rehipheight",Title = "Reset hip heights"}
+Cmd[#Cmd + 1] =	{Text = "resetgravity / regravity",Title = "Reset gravity"}
+Cmd[#Cmd + 1] =	{Text = "mcrim [plr]",Title = "Make the player become a criminal"}
+Cmd[#Cmd + 1] =	{Text = "crimall",Title = "Make all players become a criminals"}
+Cmd[#Cmd + 1] =	{Text = "void",Title ="los desaparece"}
+Cmd[#Cmd + 1] =	{Text = "voidall",Title ="desaparece a todos"}
+Cmd[#Cmd + 1] =	{Text = "lkbring [plr]",Title = "Loop bring player"}
+Cmd[#Cmd + 1] =	{Text = "unloopbring ",Title = "Unloop bring"}
+Cmd[#Cmd + 1] =	{Text = "antiarrest",Title = "antiarrest"}
+Cmd[#Cmd + 1] =	{Text = "unantikill",Title = "unantikill"}
+Cmd[#Cmd + 1] =	{Text = "keyboard",Title = "keyboard"}
+Cmd[#Cmd + 1] =	{Text = "miniloop / mp [plr]",Title = "miniloop player"}
+Cmd[#Cmd + 1] =	{Text = "loopgod / lg [plr]",Title = "loopgod player"}
+Cmd[#Cmd + 1] =	{Text = "superloop / sloop [plr]",Title = "Superloop player"}
+Cmd[#Cmd + 1] =	{Text = "unsuperloop / unsloop [plr]",Title = "Superloop player"}
+Cmd[#Cmd + 1] =	{Text = "baseballbat / bat",Title = "Gets bat"}
+Cmd[#Cmd + 1] =	{Text = "flygui",Title = "flygui"}
+Cmd[#Cmd + 1] =	{Text = "f4ck",Title = "F4CK"}
+Cmd[#Cmd + 1] =	{Text = "aimbot",Title = "aimbot"}
+Cmd[#Cmd + 1] =	{Text = "lag2",Title = "credits to the BLACKWATCH group"}
+Cmd[#Cmd + 1] =	{Text = "chatlogs",Title = "chatlogs"}
+Cmd[#Cmd + 1] =	{Text = "invisible",Title = "invisible"}
+Cmd[#Cmd + 1] =	{Text = "wallwalk / ww",Title = "wallwalk"}
+Cmd[#Cmd + 1] =	{Text = "antikill",Title = "antikill"}
+Cmd[#Cmd + 1] =	{Text = "lag [plr]",Title = "lag player"}
+Cmd[#Cmd + 1] =	{Text = "superknife",Title = "Gets super knife"}
+Cmd[#Cmd + 1] =	{Text = "firespeed / setfirespeed [count]",Title = "Changes fire speed for the gun"}
+Cmd[#Cmd + 1] =	{Text = "autofire",Title = "Changes gun ststes to auto fire"}
+Cmd[#Cmd + 1] =	{Text = "semifire",Title = "Changes gun ststes to semi fire"}
+Cmd[#Cmd + 1] =	{Text = "burst / burstbullets / bullets [count]",Title = "Changes a bullets for the gun will come out when shot"}
+Cmd[#Cmd + 1] =	{Text = "reloadtime / reloadtimes [count]",Title = "Changes reload times for the gun"}
+Cmd[#Cmd + 1] =	{Text = "gun / guns / allguns",Title = "Obtains all guns"}
+Cmd[#Cmd + 1] =	{Text = "autogun / autoguns / autoallguns",Title = "Activate auto gun when respawned"}
+Cmd[#Cmd + 1] =	{Text = "unautogun / unautoguns / unautoallguns",Title = "Unactivate auto gun when respawned"}
+Cmd[#Cmd + 1] =	{Text = "taserbypass / antitaser / lock",Title = "Bypass taser when got tased"}
+Cmd[#Cmd + 1] =	{Text = "untaserbypass / notaserbypass / unlock",Title = "Unbypass taser when got tased"}
+Cmd[#Cmd + 1] =	{Text = "nodoors / deletedoors",Title = "Deletes all doors"}
+Cmd[#Cmd + 1] =	{Text = "restoredoors / doors",Title = "Restores all doors"}
+Cmd[#Cmd + 1] =	{Text = "nowalls / deletewalls - delete walls",Title = "Deletes all walls"}
+Cmd[#Cmd + 1] =	{Text = "walls / restorewalls - restore walls",Title = "Restore all walls"}
+Cmd[#Cmd + 1] =	{Text = "anticrash / antivest",Title = "Anti crash when someone spamming armor"}
+Cmd[#Cmd + 1] =	{Text = "unanticrash / unantivest",Title = "Unanti crash when someone spamming armor"}
+Cmd[#Cmd + 1] =	{Text = "antishield / noshield",Title = "Anti shield users"}
+Cmd[#Cmd + 1] =	{Text = "unantishield",Title = "Unanti shield users"}
+Cmd[#Cmd + 1] =	{Text = "gatetower",Title = "Teleports to the gate tower"}
+Cmd[#Cmd + 1] = {Text = "tower",Title = "Teleports to the yard tower"}
+Cmd[#Cmd + 1] = {Text = "sewer",Title = "Teleports to the sewer"}
+Cmd[#Cmd + 1] = {Text = "yard",Title = "Teleports to yard"}
+Cmd[#Cmd + 1] = {Text = "sky",Title = "Teleports to sky"}
+Cmd[#Cmd + 1] =	{Text = "back",Title = "Teleports to the back nexus"}
+Cmd[#Cmd + 1] =	{Text = "nex",Title = "Teleports to the nexus"}
+Cmd[#Cmd + 1] =	{Text = "gate",Title = "Teleports to the gate"}
+Cmd[#Cmd + 1] =	{Text = "candy",Title = "Teleports to the candy"}
+Cmd[#Cmd + 1] =	{Text = "lunch",Title = "Teleports to the lunch"}
+Cmd[#Cmd + 1] =	{Text = "hell",Title = "Teleports to the hell"}
+Cmd[#Cmd + 1] =	{Text = "cell",Title = "Teleports to the cell"}
+Cmd[#Cmd + 1] =	{Text = "rof",Title = "Teleports to the rof arriba del techo"}
+Cmd[#Cmd + 1] =	{Text = "crat",Title = "Teleports to the crat"}
+Cmd[#Cmd + 1] =	{Text = "base2",Title = "Teleports to the base2"}
+Cmd[#Cmd + 1] =	{Text = "spawn",Title = "Teleports to the spawn"}
+Cmd[#Cmd + 1] =	{Text = "cage",Title = "Teleports to the cage jaula"}
+Cmd[#Cmd + 1] =	{Text = "flag",Title = "Teleports to the flag"}
+Cmd[#Cmd + 1] =	{Text = "unk",Title = "Teleports to the unk"}
+Cmd[#Cmd + 1] =	{Text = "power",Title = "Teleports to the power"}
+Cmd[#Cmd + 1] =	{Text = "safe",Title = "Teleports to the safe"}
+Cmd[#Cmd + 1] =	{Text = "4walls",Title = "Teleports to the 4walls"}
+Cmd[#Cmd + 1] =	{Text = "vent",Title = "Teleports to the vent"}
+Cmd[#Cmd + 1] =	{Text = "dun",Title = "Teleports to the dun"}
+Cmd[#Cmd + 1] =	{Text = "slide",Title = "Teleports to the slide"}
+Cmd[#Cmd + 1] =	{Text = "sew",Title = "Teleports to the sew"}
+Cmd[#Cmd + 1] = {Text = "findowner / checkscriptowner",Title = "Find a script owner in the server"}
+Cmd[#Cmd + 1] = {Text = "getplayer / getplayers",Title = "Get a players counts in the server"}
+Cmd[#Cmd + 1] = {Text = "rapidfire",Title = "Activate rapid fire"}
+Cmd[#Cmd + 1] = {Text = "autorapidfire",Title = "Auto activate rapid fire"}
+Cmd[#Cmd + 1] = {Text = "unautorapidfire",Title = "Unauto activate rapid fire"}
+Cmd[#Cmd + 1] =	{Text = "armory",Title = "Teleports to the armory"}
+Cmd[#Cmd + 1] =	{Text = "caf - teleport to cafe",Title = "Teleports to the cafeteria"}
+Cmd[#Cmd + 1] =	{Text = "base / criminalbase",Title = "Teleports to the criminals base"}
+Cmd[#Cmd + 1] =	{Text = "lunchroom",Title = "Teleports to the cafeteria room"}
+Cmd[#Cmd + 1] =	{Text = "spamchat [delay]",Title = "Spam the chat"}
+Cmd[#Cmd + 1] =	{Text = "unspamchat",Title = "Unspam the chat"}
+Cmd[#Cmd + 1] =	{Text = "savepos / saveposition",Title = "Saves positions"}
+Cmd[#Cmd + 1] =	{Text = "loadpos / loadposition",Title = "Loads positions"}
+Cmd[#Cmd + 1] =	{Text = "notify",Title = "Send a message when player leave / join"}
+Cmd[#Cmd + 1] =	{Text = "nonotify",Title = "Stop send a message when player leave / join"}
+Cmd[#Cmd + 1] =	{Text = "copychat",Title = "Copies all players chats"}
+Cmd[#Cmd + 1] =	{Text = "uncopychat",Title = "uncopies all players chats"}
+Cmd[#Cmd + 1] =	{Text = "chatnotify",Title = "Chats when player leave / join"}
+Cmd[#Cmd + 1] =	{Text = "unchatnotify / nochatnotify",Title = "Stop chat when player leave / join"}
+Cmd[#Cmd + 1] =	{Text = "opengate",Title = "Open the gate"}
+Cmd[#Cmd + 1] =	{Text = "antifell / antivoid",Title = "Activate anti fell to the void when respawn as custom team"}
+Cmd[#Cmd + 1] =	{Text = "unantifell / unantivoid",Title = "Unactivate anti fell to the void when respawn as custom team"}
+Cmd[#Cmd + 1] =	{Text = "beam [plr]",Title = "Shoot a beam to player"}
+Cmd[#Cmd + 1] =	{Text = "lagbeam / beam2 [plr]",Title = "Shoot a beam to player but lag"}
+Cmd[#Cmd + 1] =	{Text = "crash / beam3 [plr]",Title = "Shoot a beam to player but even more lag"}
+Cmd[#Cmd + 1] = {Text = "antisa",Title = "Activate anti spam arrest"}
+Cmd[#Cmd + 1] = {Text = "unantisa",Title = "Unactivate anti spam arrest"}
+Cmd[#Cmd + 1] = {Text = "crashserver",Title = "Crash a server if your pc crash wait until it stopped crash and another player will be crashed"}
+Cmd[#Cmd + 1] =	{Text = "!getprefix",Title = "If you for get prefix you can type this in chat"}
+
+local Material = {}
+
+local Mouse = game.Players.LocalPlayer:GetMouse()
+
+for i = 1,#Cmd do
+	local clone = CmdText:Clone()
+	clone.Text = Cmd[i].Text
+	clone.Name = "COMMANDS"
+	local Ins = Instance.new("StringValue", clone)
+	Ins.Name = "Title"
+	Ins.Value = Cmd[i].Title
+	local Ins2 = Instance.new("StringValue", clone)
+	Ins2.Name = "TopbarName"
+	Ins2.Value = Cmd[i].Text:split(" ")[1]
+	clone.Parent = CmdHandler
+	clone.MouseButton1Click:Connect(function()
+		Execute:CaptureFocus()
+		Execute.Text = clone.Text:split(" ")[1]
+		Execute.CursorPosition = #Execute.Text + 1
+	end)
+end
+
+Mouse.Move:Connect(function()
+	local Guis = game:GetService("CoreGui"):GetGuiObjectsAtPosition(Mouse.X, Mouse.Y)
+	local Gui
+	for i,v in pairs(Guis) do
+		if v.Parent == CmdHandler then
+			Gui = v
+		end
+	end
+	if Gui ~= nil then
+		local PositionX
+		local PositionY
+		local X = Mouse.X
+		local Y = Mouse.Y
+		if Mouse.X > 200 then
+			PositionX = Mouse.X - 201
+		else
+			PositionX = Mouse.X + 21
+		end
+		if Mouse.Y > (Mouse.ViewSizeY-96) then
+			PositionY = Mouse.Y - 97
+		else
+			PositionY = Mouse.Y
+		end
+		Background3.Visible = true
+		Background3.Position = UDim2.new(0, PositionX, 0, PositionY)
+		Topbar.Text = Gui.TopbarName.Value
+		CmdTitle.Text = Gui.Title.Value
+	else
+		Background3.Visible = false
+	end
+end)
+
+if DisableScript then
+	DisableScript()
+end
+
+local connections = getconnections(game.ReplicatedStorage.ReplicateEvent.OnClientEvent)
+local tazePlayer = getconnections(workspace.Remote.tazePlayer.OnClientEvent)
+
+local StringsLowerMessage = true-- If this true: if commands is 'Kill' but when you say k or i or l it will match to 'Kill' and you can turns this off or on when you are ingame with cmd 'slm' and 'uslm'
+local Slient = false
+local ScriptDisabled = false
+local LoopBeam = {}
+local LoopKill = {}
+local Virus = {}
+local KillAura = {}
+local LoopTase = {}
+local Admin = {}
+local Watching = nil
+local States = {}
+local BuyGamepass = game:GetService("MarketplaceService"):UserOwnsGamePassAsync(tonumber((game:GetService("Players").LocalPlayer.CharacterAppearance):split('=')[#((game:GetService("Players").LocalPlayer.CharacterAppearance):split('='))]), 96651)
+
+local function GetPlayer(String)
+	if not String then return end
+	local Yes = {}
+	for _, Player in ipairs(game.Players:GetPlayers()) do
+		if string.lower(Player.Name):match(string.lower(String)) or string.lower(Player.DisplayName):match(string.lower(String)) then
+			table.insert(Yes, Player)
+		end
+	end
+	if #Yes > 0 then
+		return Yes[1]
+	elseif #Yes < 1 then
+		return nil
+	end
+end
+
+local function GetOrientation()
+	local PosX, PosY, PosZ = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame:ToOrientation()
+	return CFrame.new(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame.X, game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame.Y, game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame.Z) * CFrame.fromOrientation(0, PosY, 0)
+end
+
+local function GetPos()
+	return game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end
+
+local function GetCamPos()
+	return workspace.CurrentCamera.CFrame
+end
+
+local function GetTeam()
+	return game.Players.LocalPlayer.TeamColor.Name
+end
+
+function Goto(Player, Distance)
+	local Distance = Distance or CFrame.new(0, 0, 0)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame * Distance
+end
+
+function Split(Arguaments, Split)
+	if not Arguaments or not Split then return end
+	return Arguaments:split(Split)
+end
+
+function ChatNotify(Message, Colors, Size)
+	game.StarterGui:SetCore("ChatMakeSystemMessage", {
+		Text = Message,
+		Color = Colors or Color3.fromRGB(255, 255, 255),
+		Font = Enum.Font.SourceSans,
+		FontSize = Size or Enum.FontSize.Size48
+	})
+end
+
+function Chat(Message, Whisper)
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, Whisper or "ALl")
+end
+
+function WaitForChild(Time, Parent, Child)
+	if not Parent or not Child then return end
+	if Parent == "LocalPlayer" then Parent = game.Players.LocalPlayer end
+	if Parent == "Character" then Parent = game.Players.LocalPlayer.Character end
+	if Parent == "Backpack" then Parent = game.Players.LocalPlayer.Character.Backpack end
+	local Times = Time * 10 or 1
+	repeat wait(.1)
+		Time = Time - 1
+	until Parent:FindFirstChild(Child) or Time <= 0
+	if Parent and Parent:FindFirstChild(Child) then
+		return Parent:FindFirstChild(Child)
+	else
+		return nil
+	end
+end
+
+function Kill(Player)
+	local events = {}
+	local gun = nil
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+			gun = v
+		end
+	end
+	if gun == nil then
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+				gun = v
+			end
+		end
+	end
+	coroutine.wrap(function()
+		for i = 1,30 do
+			game.ReplicatedStorage.ReloadEvent:FireServer(gun)
+			wait(.5)
+		end
+	end)()
+	for i = 1,5 do
+		events[#events + 1] = {
+			Hit = Player.Character:FindFirstChild("Head") or Player.Character:FindFirstChildOfClass("Part"),
+			Cframe = CFrame.new(),
+			RayObject = Ray.new(Vector3.new(), Vector3.new()),
+			Distance = 0
+		}
+	end
+	game.ReplicatedStorage.ShootEvent:FireServer(events, gun)
+end
+
+function KillTeam(Team)
+	pcall(function()
+		if Player.Character:FindFirstChild("ForceField") or not workspace:FindFirstChild(Player.Name) or not workspace:FindFirstChild(Player.Name):FindFirstChild("Head") or Player == nil or Player.Character.Parent ~= workspace then return end
+		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+
+		local MyTeam = GetTeam()
+		if Player.TeamColor.Name == game.Players.LocalPlayer.TeamColor.Name then
+			local savedcf = GetPos()
+			local savedcamcf = GetCamPos()
+			workspace.Remote.loadchar:InvokeServer(nil, BrickColor.random().Name)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+			workspace.CurrentCamera.CFrame = savedcamcf
+			workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+		end
+
+		local Gun = game.Players.LocalPlayer.Character:FindFirstChild("Remington 870") or game.Players.LocalPlayer.Backpack:FindFirstChild("Remington 870")
+
+		local FireEvent = {
+			[1] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [2] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [3] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [4] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [5] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [6] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [7] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}, [8] = {
+				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+				["Distance"] = 0, 
+				["Cframe"] = CFrame.new(), 
+				["Hit"] = workspace[Player.Name].Head
+			}
+		}
+
+		game:GetService("ReplicatedStorage").ShootEvent:FireServer(FireEvent, Gun)
+		Gun.Parent = game.Players.LocalPlayer.Character
+		game.Players.LocalPlayer.Character["Remington 870"]:Destroy()
+	end)
+end
+
+function KillAll()
+	local events = {}
+	local gun = nil
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v ~= game.Players.LocalPlayer then
+			if v.TeamColor.Name == game.Players.LocalPlayer.TeamColor.Name then
+				local savedcf = GetOrientation()
+				local camcf = workspace.CurrentCamera.CFrame
+				workspace.Remote.loadchar:InvokeServer(nil, BrickColor.random().Name)
+				workspace.CurrentCamera.CFrame = camcf
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+			end
+			for i = 1,10 do
+				events[#events + 1] = {
+					Hit = v.Character:FindFirstChild("Head") or v.Character:FindFirstChildOfClass("Part"),
+					Cframe = CFrame.new(),
+					RayObject = Ray.new(Vector3.new(), Vector3.new()),
+					Distance = 0
+				}
+			end
+		end
+	end
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+			gun = v
+		end
+	end
+	if gun == nil then
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+				gun = v
+			end
+		end
+	end
+	coroutine.wrap(function()
+		for i = 1,30 do
+			game.ReplicatedStorage.ReloadEvent:FireServer(gun)
+			wait(.5)
+		end
+	end)()
+	game.ReplicatedStorage.ShootEvent:FireServer(events, gun)
+end
+
+function Tase(Player)
+	if Player.TeamColor.Name == "Bright blue" or not workspace:FindFirstChild(Player.Name) or not workspace:FindFirstChild(Player.Name):FindFirstChild("Head") or Player == nil or Player.Character.Parent ~= workspace then return end
+	pcall(function()
+		local savedcf = GetPos()
+		local savedteam
+
+		local Gun = game.Players.LocalPlayer.Backpack:FindFirstChild("Taser") or game.Players.LocalPlayer.Character:FindFirstChild("Taser")
+
+		local changedteam = false
+		if game.Players.LocalPlayer.TeamColor.Name ~= "Bright blue" or not Gun then
+			savedteam = GetTeam()
+			workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new("Bright blue").Name)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+			changedteam = true
+		end
+
+		local Guns = game.Players.LocalPlayer.Backpack:FindFirstChild("Taser") or game.Players.LocalPlayer.Character:FindFirstChild("Taser")
+
+		local TaseEvent = 
+			{
+				[1] = 
+				{
+					["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
+					["Distance"] = 0, 
+					["Cframe"] = CFrame.new(), 
+					["Hit"] = workspace[Player.Name].Torso
+				}
+			}
+
+		game:GetService("ReplicatedStorage").ShootEvent:FireServer(TaseEvent, Guns)
+		if changedteam then
+			workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new(savedteam).Name)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+		end
+	end)
+end
+
+function TaseTeam(Team)
+	local events = {}
+	local gun = nil
+	local savedteam = game.Players.LocalPlayer.TeamColor.Name
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v ~= game.Players.LocalPlayer and v.TeamColor.Name == Team then
+			events[#events + 1] = {
+				Hit = v.Character:FindFirstChildOfClass("Part"),
+				Cframe = CFrame.new(),
+				RayObject = Ray.new(Vector3.new(), Vector3.new()),
+				Distance = 0
+			}
+		end
+	end
+	if not game.Players.LocalPlayer.Character:FindFirstChild("Taser") and not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Taser") then
+		savedteam = game.Players.LocalPlayer.TeamColor.Name
+		local savedcf = GetOrientation()
+		local camcf = workspace.CurrentCamera.CFrame
+		workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new("Bright blue").Name)
+		workspace.CurrentCamera.CFrame = camcf
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+	end
+	gun = game.Players.LocalPlayer.Character:FindFirstChild("Taser") or game.Players.LocalPlayer.Backpack:FindFirstChild("Taser")
+	game.ReplicatedStorage.ShootEvent:FireServer(events, gun)
+	local savedcf = GetOrientation()
+	local camcf = workspace.CurrentCamera.CFrame
+	workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new(savedteam).Name)
+	workspace.CurrentCamera.CFrame = camcf
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+end
+
+function TaserAll()
+	local events = {}
+	local gun = nil
+	local savedteam = game.Players.LocalPlayer.TeamColor.Name
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v ~= game.Players.LocalPlayer then
+			events[#events + 1] = {
+				Hit = v.Character:FindFirstChildOfClass("Part"),
+				Cframe = CFrame.new(),
+				RayObject = Ray.new(Vector3.new(), Vector3.new()),
+				Distance = 0
+			}
+		end
+	end
+	if not game.Players.LocalPlayer.Character:FindFirstChild("Taser") and not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Taser") then
+		savedteam = game.Players.LocalPlayer.TeamColor.Name
+		local savedcf = GetOrientation()
+		local camcf = workspace.CurrentCamera.CFrame
+		workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new("Bright blue").Name)
+		workspace.CurrentCamera.CFrame = camcf
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+	end
+	gun = game.Players.LocalPlayer.Character:FindFirstChild("Taser") or game.Players.LocalPlayer.Backpack:FindFirstChild("Taser")
+	game.ReplicatedStorage.ShootEvent:FireServer(events, gun)
+	local savedcf = GetOrientation()
+	local camcf = workspace.CurrentCamera.CFrame
+	workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new(savedteam).Name)
+	workspace.CurrentCamera.CFrame = camcf
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+end
+
+local NOW = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+game:GetService("RunService").Stepped:Connect(function()
+	if States.LoopBring then
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		UseCommand = true
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = NOW
+	end
+end)
+
+function DoLoop()
+	local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	repeat wait() until not States.LoopBring
+	workspace.Remote.loadchar:InvokeServer()
+	UseCommand = true
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end
+
+function LoopBring(Player)
+	workspace.Remote.loadchar:InvokeServer()
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single.Hammer.ITEMPICKUP)
+	if not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") then
+		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver.M9.ITEMPICKUP)
+	end
+	local CHAR = game.Players.LocalPlayer.Character
+	CHAR.Humanoid.Name = "1"
+	local c = CHAR["1"]:Clone()
+	c.Name = "Humanoid"
+	c.Parent = CHAR
+	CHAR["1"]:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = CHAR
+	CHAR.Animate.Disabled = true
+	wait()
+	CHAR.Animate.Disabled = false
+	CHAR.Humanoid.DisplayDistanceType = "None"
+	local Tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Hammer") or game.Players.LocalPlayer.Backpack:FindFirstChild("M9")
+	if not game.Players.LocalPlayer.Character:FindFirstChild("Hammer") and not game.Players.LocalPlayer.Character:FindFirstChild("M9") then
+		Tool.Parent = game.Players.LocalPlayer.Character
+	end
+	local stop = 0
+	repeat wait(.1)
+		stop = stop + 1
+		Player.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -0.75)
+	until (not game.Players.LocalPlayer.Character:FindFirstChild("Hammer") and not game.Players.LocalPlayer.Character:FindFirstChild("M9") or not game.Players.LocalPlayer.Character or not game.Players.LocalPlayer.Character.HumanoidRootPart or not game.Players[Player.Name] or stop > 500)
+end
+
+function Teleport(Player, Position)
+	if Player == nil or Position == nil then return end
+	local savedcf = GetPos()
+	workspace.Remote.loadchar:InvokeServer()
+	UseCommand = true
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single.Hammer.ITEMPICKUP)
+	if not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") then
+		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver.M9.ITEMPICKUP)
+	end
+	local CHAR = game.Players.LocalPlayer.Character
+	CHAR.Humanoid.Name = "1"
+	local c = CHAR["1"]:Clone()
+	c.Name = "Humanoid"
+	c.Parent = CHAR
+	CHAR["1"]:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = CHAR
+	CHAR.Animate.Disabled = true
+	wait()
+	CHAR.Animate.Disabled = false
+	CHAR.Humanoid.DisplayDistanceType = "None"
+	local tool = game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") or game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("M9")
+	tool.Parent = CHAR
+	local STOP = 0
+	repeat wait(.1)
+		STOP = STOP + 1
+		Player.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -0.75)
+	until (not game.Players.LocalPlayer.Character:FindFirstChild("M9") and not game.Players.LocalPlayer.Character:FindFirstChild("Hammer") or not game.Players.LocalPlayer.Character.HumanoidRootPart or not Player.Character.HumanoidRootPart or not game.Players.LocalPlayer.Character.HumanoidRootPart.Parent or not Player.Character.HumanoidRootPart.Parent or STOP > 500) and STOP > 3
+	wait(.2)
+	workspace.Remote.loadchar:InvokeServer()
+	UseCommand = true
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+end
+
+function Void(Player)
+	if Player == nil then return end
+	local savedcf = GetOrientation()
+	workspace.Remote.loadchar:InvokeServer()
+	UseCommand = true
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single.Hammer.ITEMPICKUP)
+	if not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") then
+		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver.M9.ITEMPICKUP)
+	end
+	local CHAR = game.Players.LocalPlayer.Character
+	CHAR.Humanoid.Name = "1"
+	local c = CHAR["1"]:Clone()
+	c.Name = "Humanoid"
+	c.Parent = CHAR
+	CHAR["1"]:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = CHAR
+	CHAR.Animate.Disabled = true
+	wait()
+	CHAR.Animate.Disabled = false
+	CHAR.Humanoid.DisplayDistanceType = "None"
+	local tool = game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") or game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("M9")
+	tool.Parent = CHAR
+	local STOP = 0
+	repeat wait(.1)
+		STOP = STOP + 1
+		Player.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -0.75)
+	until (not game.Players.LocalPlayer.Character:FindFirstChild("M9") and not game.Players.LocalPlayer.Character:FindFirstChild("Hammer") or not game.Players.LocalPlayer.Character.HumanoidRootPart or not Player.Character.HumanoidRootPart or not game.Players.LocalPlayer.Character.HumanoidRootPart.Parent or not Player.Character.HumanoidRootPart.Parent or STOP > 500) and STOP > 3
+	for i = 1,10 do
+		wait()
+		UseCommand = true
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999999999999, 99999999999999, 99999999999999)
+	end
+	workspace.Remote.loadchar:InvokeServer()
+	UseCommand = true
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+end
+
+function TeleportV(Player, Player2)
+	if Player == nil or Player2 == nil then return end
+	local savedcf = GetPos()
+	workspace.Remote.loadchar:InvokeServer()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.single.Hammer.ITEMPICKUP)
+	if not game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") then
+		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver.M9.ITEMPICKUP)
+	end
+	local CHAR = game.Players.LocalPlayer.Character
+	CHAR.Humanoid.Name = "1"
+	local c = CHAR["1"]:Clone()
+	c.Name = "Humanoid"
+	c.Parent = CHAR
+	CHAR["1"]:Destroy()
+	game.Workspace.CurrentCamera.CameraSubject = CHAR
+	CHAR.Animate.Disabled = true
+	wait()
+	CHAR.Animate.Disabled = false
+	CHAR.Humanoid.DisplayDistanceType = "None"
+	local tool = game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Hammer") or game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("M9")
+	tool.Parent = CHAR
+	local STOP = 0
+	repeat wait(.1)
+		STOP = STOP + 1
+		Player.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -0.75)
+	until (not game.Players.LocalPlayer.Character:FindFirstChild("M9") and not game.Players.LocalPlayer.Character:FindFirstChild("Hammer") or not game.Players.LocalPlayer.Character.HumanoidRootPart or not Player.Character.Humanoid... (Tiempo restante: 146 KB)
