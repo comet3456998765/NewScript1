@@ -343,7 +343,7 @@ TransparencyBar.MouseButton1Click:Connect(function()
 end)
 
 local UseCommand = false
-local Versions = "5.8"
+local Versions = "5.9"
 local Cmd = {}
 
 Cmd[#Cmd + 1] = {Text = "versions "..Versions,Title = "Script versions"}
@@ -479,6 +479,7 @@ Cmd[#Cmd + 1] =	{Text = "loopgod / lg [plr]",Title = "loopgod player"}
 Cmd[#Cmd + 1] =	{Text = "superloop / sloop [plr]",Title = "Superloop player"}
 Cmd[#Cmd + 1] =	{Text = "unsuperloop / unsloop [plr]",Title = "Superloop player"}
 Cmd[#Cmd + 1] =	{Text = "baseballbat / bat",Title = "Gets bat"}
+Cmd[#Cmd + 1] =	{Text = "guigodmode / gdgui",Title = "GUI Godmode"}
 Cmd[#Cmd + 1] =	{Text = "flygui",Title = "flygui"}
 Cmd[#Cmd + 1] =	{Text = "f4ck",Title = "F4CK"}
 Cmd[#Cmd + 1] =	{Text = "aimbot",Title = "aimbot"}
@@ -507,6 +508,7 @@ Cmd[#Cmd + 1] =	{Text = "anticrash / antivest",Title = "Anti crash when someone 
 Cmd[#Cmd + 1] =	{Text = "unanticrash / unantivest",Title = "Unanti crash when someone spamming armor"}
 Cmd[#Cmd + 1] =	{Text = "antishield / noshield",Title = "Anti shield users"}
 Cmd[#Cmd + 1] =	{Text = "unantishield",Title = "Unanti shield users"}
+Cmd[#Cmd + 1] =	{Text = "flycar",Title = "Flycar"}
 Cmd[#Cmd + 1] =	{Text = "gatetower",Title = "Teleports to the gate tower"}
 Cmd[#Cmd + 1] = {Text = "tower",Title = "Teleports to the yard tower"}
 Cmd[#Cmd + 1] = {Text = "sewer",Title = "Teleports to the sewer"}
@@ -742,70 +744,47 @@ function Kill(Player)
 end
 
 function KillTeam(Team)
-	pcall(function()
-		if Player.Character:FindFirstChild("ForceField") or not workspace:FindFirstChild(Player.Name) or not workspace:FindFirstChild(Player.Name):FindFirstChild("Head") or Player == nil or Player.Character.Parent ~= workspace then return end
-		workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
-
-		local MyTeam = GetTeam()
-		if Player.TeamColor.Name == game.Players.LocalPlayer.TeamColor.Name then
-			local savedcf = GetPos()
-			local savedcamcf = GetCamPos()
-			workspace.Remote.loadchar:InvokeServer(nil, BrickColor.random().Name)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
-			workspace.CurrentCamera.CFrame = savedcamcf
-			workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+	local events = {}
+	local gun = nil
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v ~= game.Players.LocalPlayer and v.TeamColor.Name == Team then
+			if v.TeamColor.Name == game.Players.LocalPlayer.TeamColor.Name then
+				local savedcf = GetOrientation()
+				local camcf = workspace.CurrentCamera.CFrame
+				workspace.Remote.loadchar:InvokeServer(nil, BrickColor.random().Name)
+				workspace.CurrentCamera.CFrame = camcf
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = savedcf
+			end
+			for i = 1,10 do
+				events[#events + 1] = {
+					Hit = v.Character:FindFirstChild("Head") or v.Character:FindFirstChildOfClass("Part"),
+					Cframe = CFrame.new(),
+					RayObject = Ray.new(Vector3.new(), Vector3.new()),
+					Distance = 0
+				}
+			end
 		end
-
-		local Gun = game.Players.LocalPlayer.Character:FindFirstChild("Remington 870") or game.Players.LocalPlayer.Backpack:FindFirstChild("Remington 870")
-
-		local FireEvent = {
-			[1] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [2] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [3] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [4] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [5] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [6] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [7] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}, [8] = {
-				["RayObject"] = Ray.new(Vector3.new(), Vector3.new()), 
-				["Distance"] = 0, 
-				["Cframe"] = CFrame.new(), 
-				["Hit"] = workspace[Player.Name].Head
-			}
-		}
-
-		game:GetService("ReplicatedStorage").ShootEvent:FireServer(FireEvent, Gun)
-		Gun.Parent = game.Players.LocalPlayer.Character
-		game.Players.LocalPlayer.Character["Remington 870"]:Destroy()
-	end)
+	end
+	workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+			gun = v
+		end
+	end
+	if gun == nil then
+		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v.Name ~= "Taser" and v:FindFirstChild("GunStates") then
+				gun = v
+			end
+		end
+	end
+	coroutine.wrap(function()
+		for i = 1,30 do
+			game.ReplicatedStorage.ReloadEvent:FireServer(gun)
+			wait(.5)
+		end
+	end)()
+	game.ReplicatedStorage.ShootEvent:FireServer(events, gun)
 end
 
 function KillAll()
@@ -1508,6 +1487,7 @@ function PlayerChatted(Message)
 		if BuyGamepass then
 			if plr ~= nil then
 				local savedteam = game.Players.LocalPlayer.TeamColor.Name
+				workspace.Remote.loadchar:InvokeServer(nil, BrickColor.new("Bright blue").Name)
 				workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Riot Shield"].ITEMPICKUP)
 				local Item = game.Players.LocalPlayer:FindFirstChild("Backpack"):FindFirstChild("Riot Shield") or game.Players.LocalPlayer.Character:FindFirstChild("Riot Shield")
 				local savedcf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -1938,6 +1918,121 @@ function PlayerChatted(Message)
 	if Command("keyboard") then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
 	end
+	if Command("guigodmode") or Command ("gdgod") then
+	local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local god = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+ 
+ScreenGui.Parent = game.CoreGui
+ 
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+main.Position = UDim2.new(0.239242688, 0, 0.123595506, 0)
+main.Size = UDim2.new(0, 226, 0, 191)
+ 
+UICorner.Parent = main
+ 
+god.Name = "god"
+god.Parent = main
+god.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+god.Position = UDim2.new(0.0557400137, 0, 0.435176879, 0)
+god.Size = UDim2.new(0, 200, 0, 50)
+god.Font = Enum.Font.SourceSans
+god.Text = "God(OFF)"
+god.TextColor3 = Color3.fromRGB(255, 0, 0)
+god.TextSize = 14.000
+god.MouseButton1Down:connect(function()
+	if not _G.God then                
+		_G.God = true
+		god.Text = "God(ON)"
+		while _G.God == true do
+			game.Players.LocalPlayer.Character.Humanoid.Name = 1
+			local l = game.Players.LocalPlayer.Character["1"]:Clone()
+			l.Parent = game.Players.LocalPlayer.Character
+			l.Name = "Humanoid"
+			wait(0.1)
+			game.Players.LocalPlayer.Character["1"]:Destroy()
+			game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Character.Animate.Disabled = true
+			game.Players.LocalPlayer.Character.Animate.Disabled = true
+			game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
+			wait(5)
+			saved = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			local A_1 = "\66\114\111\121\111\117\98\97\100\100"
+			local Event = game:GetService("Workspace").Remote.loadchar
+			Event:InvokeServer(A_1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = saved
+		end
+	elseif _G.God then
+		_G.God = not _G.God
+		god.Text = "God(OFF)"
+	end
+end)
+UICorner_2.Parent = god
+ 
+Frame.Parent = main
+Frame.BackgroundColor3 = Color3.fromRGB(207, 0, 0)
+Frame.Position = UDim2.new(0, 0, 0.109947644, 0)
+Frame.Size = UDim2.new(0, 226, 0, 8)
+ 
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+TextLabel.BorderColor3 = Color3.fromRGB(39, 39, 39)
+TextLabel.Position = UDim2.new(0.0575221255, 0, 0.031413611, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 9)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Redtail Scripts"
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextLabel.TextSize = 14.000
+ 
+local UserInputService = game:GetService("UserInputService")
+ 
+function draggable(gui)
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+ 
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+ 
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+ 
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+ 
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+ 
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+ 
+draggable(main)
+       Notify("GUIgodmode "..Player.DisplayName, Color3.fromRGB(0, 255, 0), "Success")
+    end
 	if Command("virus") or Command("addvirus") then
 		local Player = GetPlayer(Arg2)
 		if Player and not Virus[Player.UserId] then
@@ -2183,6 +2278,10 @@ game:GetService("StarterGui"):SetCore("SendNotification",{["Title"] = "Invisible
 	if Command("unlag") then	
 		States.SpamArrest = false
 		Notify("Unlag", Color3.fromRGB(0, 255, 0), "Success")
+	end
+	if Command("flycar") then
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/ROOT44x/scripts/main/scripts/LoadstringmdNBrr3bGV5S", true))()
+	    Notify("Flycar GUI ", Color3.fromRGB(0, 255, 0), "Success")
 	end
     if Command("una") or Command("update") then
 		Notify("Updating versions...", Color3.fromRGB(0, 255, 255), "Updates")
