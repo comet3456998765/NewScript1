@@ -1,13 +1,13 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local player = game.Players.LocalPlayer
-local whitelist = {3620776639,1867773459} -- Lista de IDs permitidas
+local whitelist = {3620776639,1867773459,2313283831} -- Lista de IDs permitidas
 
 local Window = Library.CreateLib("Check id", colors)
 local Tab = Window:NewTab("Check id")
 local Section = Tab:NewSection("Checkid:")
 
 Section:NewButton("Press me", "this button check your id", function()
-if table.find(whitelist, player.UserId, 1,2) then
+if table.find(whitelist, player.UserId, 1,2,3) then
 Section:NewLabel("Estado/Condition")
 Section:NewLabel("Jugador permitido/Allowed player (3 sec)")
 wait("3")
