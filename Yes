@@ -1,3 +1,16 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local player = game.Players.LocalPlayer
+local whitelist = {3620776639,1867773459} -- Lista de IDs permitidas
+
+local Window = Library.CreateLib("Check id", colors)
+local Tab = Window:NewTab("Check id")
+local Section = Tab:NewSection("Checkid:")
+
+Section:NewButton("Press me", "this button check your id", function()
+if table.find(whitelist, player.UserId, 1,2) then
+Section:NewLabel("Estado/Condition")
+Section:NewLabel("Jugador permitido/Allowed player (3 sec)")
+wait("3")
 --[[ Script made by
 Discord : gramajoalexishack#0524
 ]]
@@ -5180,4 +5193,12 @@ getgenv().DisableScript = function()
 end
 
 workspace.Remote.loadchar:InvokeServer()
-
+wait("2")
+OrionLib:Destroy()
+else
+print("no whitelist in this script")
+Tab:AddLabel("Estado/Condition")
+Section:NewLabel("Jugador no registrado en listas/Player not registered in lists")
+print("No estas registrado en este script por favor pide soporte si sos alguien importante")
+end
+end)
